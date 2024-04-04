@@ -1,4 +1,7 @@
-export const cartInitialState = JSON.parse(window.localStorage.getItem('cart')) || []
+
+export const cartInitialState = JSON.parse(window.localStorage.getItem('cart')) || {}
+
+
 
 
 export const CART_ACTION_TYPES = {
@@ -11,11 +14,11 @@ export const CART_ACTION_TYPES = {
 
 // Función para actualizar el localStorage con el estado del carrito
 export const updateLocalStorage = state => {
+  /* let total = 0;
+  state.map(e => total += e.price * e.quantity );
+  window.localStorage.setItem('total', JSON.stringify(total)); */
   
   window.localStorage.setItem('cart', JSON.stringify(state));
-  let total = 0;
-  state.map(e => total += e.price * e.quantity );
-  window.localStorage.setItem('total', JSON.stringify(total));
 };
 
 // Reducer
@@ -24,40 +27,55 @@ export const cartReducer = (state, action) => {
 
   switch (type) {
     case CART_ACTION_TYPES.ADD_TO_CART:
+      /* const [cart , total ] =  state; */
+      /* console.log(cart , total) */
       const { id } = action.payload;
-      const productInCartIndex = state.findIndex(item => item.id === id);
+      const productInCartIndex = state.cart.findIndex(item => item.id === id);
     
-      if (productInCartIndex >= 0) {
-        const newState = state.map((item, index) => {
+      if (productInCartIndex > 0) {
+        const newState = state.cart.map((item, index) => {
           if (index === productInCartIndex) {
             return {
-              ...item,
+              ...item, 
               quantity: item.quantity + 1
             };
           }
           return item;
         });
-        const total = newState.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
-        updateLocalStorage(newState); // Aquí actualizamos el localStorage con el nuevo estado que incluye tanto el carrito como el total
-        return newState;
+        const totales = newState.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
+        const newProducts = {
+          cart  : newState,
+          total : totales
+        }
+        updateLocalStorage(newProducts); // Aquí actualizamos el localStorage con el nuevo estado que incluye tanto el carrito como el total
+        return newProducts;
       }
     
       const newState = [
-        ...state,
+        ...state.cart,
         {
           ...action.payload, // product
           quantity: 1
         }
       ];
-      const total = newState.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
-      updateLocalStorage(newState); // Aquí también
-      return newState;
+      const totaly = newState.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
+      const newProducts = {
+        cart  : newState,
+        total : totaly
+      }
+      updateLocalStorage(newProducts); // Aquí también
+      return newProducts;
 
     case CART_ACTION_TYPES.REMOVE_FROM_CART:
       const { id: removeId } = payload;
       const filteredState = state.filter(item => item.id !== removeId);
-      updateLocalStorage(filteredState);
-      return filteredState;
+      const result = filteredState.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
+      const newFilters = {
+        cart: filteredState,
+        total : result
+      }
+      updateLocalStorage(newFilters);
+      return newFilters;
 
     case CART_ACTION_TYPES.SEND_FORM:
       updateLocalStorage([]);
@@ -68,8 +86,12 @@ export const cartReducer = (state, action) => {
 
      
     case CART_ACTION_TYPES.CLEAR_CART:
-      updateLocalStorage([]);
-      return [];
+      const clear  = {
+        cart : [],
+        total : 0
+      }
+      updateLocalStorage(clear);
+      return clear;
 
     default:
       return state;

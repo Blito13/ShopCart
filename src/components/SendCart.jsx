@@ -5,8 +5,7 @@ export function SendCart({result}) {
   const [total , setTotal]  = useState(0);
   const {cart} = useCart();
   console.log(cart)
- const  stateMent = JSON.parse(window.localStorage.getItem('total'))||[] ;
- console.log(stateMent)
+
  /*  useEffect(()=>{
     setTotal(getTotal())
   }) */
@@ -20,7 +19,7 @@ export function SendCart({result}) {
     <div>
       <form onSubmit={handleSubmit}>
         <label>
-        <p>Total:{stateMent}</p>
+        <p>Total:"ksldkal"</p>
         </label>
         <br />
         <button type="submit">Enviar pedido por WhatsApp</button>

@@ -3,6 +3,7 @@ import { useId, useState , useEffect} from "react";
 import { CartIcon, ClearCartIcon } from "./Icons";
 import { useCart } from '../hooks/useCart';
 import { SendCart } from '../components/SendCart';
+
 function CartItem ({thumbnail , price , title , quantity , addToCart})  {
      return (
         <li>
@@ -30,7 +31,7 @@ export function Cart () {
     
   /*   const [total , setTotal] = useState(0); */
 
-   console.log(cart.total )
+   console.log(total )
     return (
         <>
         <label className="cart-button" htmlFor={cartCheckBoxId}>
