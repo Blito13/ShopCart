@@ -3,15 +3,12 @@ import { useCart } from "../hooks/useCart";
 export function SendCart({result}) {
   const [order, setOrder] = useState('');
   const [total , setTotal]  = useState(0);
-/*   const {cart , getTotal} = useCart();
-  console.log(getTotal) */
- /* const  stateMent = JSON.parse(window.localStorage.getItem('total'))||[] ; */
-/*  console.log(stateMent) */
+  const {cart} = useCart();
+  console.log(cart)
 
  /*  useEffect(()=>{
     setTotal(getTotal())
   }) */
-  console.log(result)
   const handleSubmit = (e) => {
     e.preventDefault();
     console.log(sendForm)
@@ -22,7 +19,7 @@ export function SendCart({result}) {
     <div>
       <form onSubmit={handleSubmit}>
         <label>
-        <p>Total:${result}</p>
+        <p>Total:"ksldkal"</p>
         </label>
         <br />
         <button type="submit">Enviar pedido por WhatsApp</button>

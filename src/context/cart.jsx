@@ -34,7 +34,8 @@ export function CartProvider ({children}) {
 
     return (
         <CartContext.Provider value = {{
-            cart : state ,
+            cart : state.cart ,
+            total : state.total,
             addToCart,
             removeFromCart,
             clearCart,
