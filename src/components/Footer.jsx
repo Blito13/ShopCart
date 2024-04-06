@@ -6,7 +6,8 @@ import { useEffect } from 'react';
 export  function Footer () {
     const {cart } = useCart();
     const {filters} = useFilters();
-   /*  window.localStorage.setItem('cart', JSON.stringify([])) */
+    /* window.localStorage.setItem('cart', JSON.stringify([])) */
+    /* ocalStorage.removeItem("cart"); */
    
     return (
         <footer>

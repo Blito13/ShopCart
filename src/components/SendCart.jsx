@@ -1,10 +1,10 @@
 import React, { useEffect, useState } from 'react';
 import { useCart } from "../hooks/useCart";
-export function SendCart({result}) {
+export function SendCart() {
   const [order, setOrder] = useState('');
   const [total , setTotal]  = useState(0);
   const {cart} = useCart();
-  console.log(cart)
+  console.log(cart.total)
 
  /*  useEffect(()=>{
     setTotal(getTotal())
@@ -19,7 +19,7 @@ export function SendCart({result}) {
     <div>
       <form onSubmit={handleSubmit}>
         <label>
-        <p>Total:"ksldkal"</p>
+        <p>Total:${cart.total}</p>
         </label>
         <br />
         <button type="submit">Enviar pedido por WhatsApp</button>

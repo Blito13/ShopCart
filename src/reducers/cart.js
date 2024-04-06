@@ -1,5 +1,9 @@
 
-export const cartInitialState = JSON.parse(window.localStorage.getItem('cart')) || {}
+const setObject = {
+  cart : [],
+  total : "se actualiza desde aca principalmente"
+}
+export const cartInitialState = JSON.parse(window.localStorage.getItem('cart')) || setObject
 
 
 
@@ -14,10 +18,6 @@ export const CART_ACTION_TYPES = {
 
 // Función para actualizar el localStorage con el estado del carrito
 export const updateLocalStorage = state => {
-  /* let total = 0;
-  state.map(e => total += e.price * e.quantity );
-  window.localStorage.setItem('total', JSON.stringify(total)); */
-  
   window.localStorage.setItem('cart', JSON.stringify(state));
 };
 
@@ -32,7 +32,7 @@ export const cartReducer = (state, action) => {
       const { id } = action.payload;
       const productInCartIndex = state.cart.findIndex(item => item.id === id);
     
-      if (productInCartIndex > 0) {
+      if (productInCartIndex >= 0) {
         const newState = state.cart.map((item, index) => {
           if (index === productInCartIndex) {
             return {
@@ -43,6 +43,7 @@ export const cartReducer = (state, action) => {
           return item;
         });
         const totales = newState.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
+        console.log(totales)
         const newProducts = {
           cart  : newState,
           total : totales
@@ -68,7 +69,7 @@ export const cartReducer = (state, action) => {
 
     case CART_ACTION_TYPES.REMOVE_FROM_CART:
       const { id: removeId } = payload;
-      const filteredState = state.filter(item => item.id !== removeId);
+      const filteredState = state.cart.filter(item => item.id !== removeId);
       const result = filteredState.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
       const newFilters = {
         cart: filteredState,
@@ -78,8 +79,12 @@ export const cartReducer = (state, action) => {
       return newFilters;
 
     case CART_ACTION_TYPES.SEND_FORM:
-      updateLocalStorage([]);
-      return [];
+      const cleared  = {
+        cart : [],
+        total : 0
+      }
+      updateLocalStorage(cleared);
+      return cleared;
 
     case CART_ACTION_TYPES.TOTAL_PRICE:
       return []
@@ -94,6 +99,7 @@ export const cartReducer = (state, action) => {
       return clear;
 
     default:
-      return state;
+   /*    console.log(state, "sadjaksjdla") */
+      return state.cart;
   }
 };
