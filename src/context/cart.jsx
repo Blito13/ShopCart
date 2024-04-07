@@ -6,6 +6,19 @@ export const CartContext = createContext();
 function useCartReducer (){
     const [state , dispatch] = useReducer(cartReducer,cartInitialState);
 console.log(state)
+const  getNameRecipes = name => { 
+    return async function (dispatch){
+        try{
+            let json = await axios.get(`/recipes?name=${name}`)
+            return dispatch({
+                type : 'GET_NAME_RECIPE',
+                payload : json.data
+            })
+            
+        }catch(error){
+        console.log(error)}
+    }
+}
     const addToCart  = product => dispatch({
         type:'ADD_TO_CART',
         payload : product
@@ -15,10 +28,10 @@ console.log(state)
         payload : product
     })
     const sendForm = form => { 
-       
+       console.log(form);
         const whatsappLink = `whatsapp://send?phone=${import.meta.env.VITE_APP_NMBR}&text=${encodeURIComponent(form)}`;
         window.location.href = whatsappLink;
-        dispatch({type : 'CLEAR_CART'})
+        /* dispatch({type : 'CLEAR_CART'}) */
     }
     const getTotal = () => dispatch({
         type: 'TOTAL_PRICE',

@@ -3,7 +3,7 @@ import { useId, useState , useEffect} from "react";
 import { CartIcon, ClearCartIcon } from "./Icons";
 import { useCart } from '../hooks/useCart';
 import { SendCart } from '../components/SendCart';
-
+/* import { alfajoresChocolate} from "../media/realMedia/alfajoresChocolate.jpeg" */
 function CartItem ({thumbnail , price , title , quantity , addToCart})  {
      return (
         <li>
@@ -20,7 +20,7 @@ function CartItem ({thumbnail , price , title , quantity , addToCart})  {
                         <small>
                             Qty:{quantity}
                         </small>
-                        <button onClick={addToCart}>+</button>
+                        <button style = {{backgroundColor : "rgb(19, 148, 16)"}} onClick={addToCart}>+</button>
                     </footer>
                 </li>
      )
@@ -32,6 +32,7 @@ export function Cart () {
   /*   const [total , setTotal] = useState(0); */
 
 /*    console.log(cart , total , clearCart) */
+
     return (
         <>
         <label className="cart-button" htmlFor={cartCheckBoxId}>
@@ -58,10 +59,10 @@ export function Cart () {
                 :<h1>No products yet</h1>
                 }
            <div></div>
-
+                {/* <img src={alfajoresChocolate} alt = "ss"></img> */}
                 
                 
-            <button onClick={clearCart}>
+            <button style = {{marginTop : "9px" , backgroundColor : "rgb(19, 148, 16)"}} onClick={clearCart}>
                 <ClearCartIcon/>
             </button>
         </aside>

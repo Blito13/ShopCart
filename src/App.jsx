@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Products } from './components/Products';
-import {products as initialProducts} from './mocks/products.json';
+import {products as initialProducts} from './mocks/products';
 import { Header } from './components/Header';
 import { IS_DEVELOPMENT } from './components/config';
 import { Footer } from './components/Footer';

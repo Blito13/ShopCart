@@ -1,6 +1,7 @@
 import "./Products.css";
 import { AddToCartIcon, RemoveFromCartIcon } from "./Icons";
 import { useCart } from "../hooks/useCart";
+/* import  alfajoresChocolate from "../media/realMedia/alfajoresChocolate.jpeg" */
 
 export function Products ({ products }) {
     const {addToCart ,cart,  total, removeFromCart ,clearCart} = useCart();
@@ -10,10 +11,10 @@ export function Products ({ products }) {
     }
     return(
         <main className='products'>
+           {/* <img src={alfajoresChocolate} alt = "ss"></img> */}
             <ul>
-            <button onClick={clearCart}>ambrosio</button>
                 {
-                    products.slice(0,10).map(product =>{
+                    products.slice(0,11).map(product =>{
                         const isProductInCart = checkProductInCart(product)
                         return (
                         <li key ={product.id}>
@@ -26,7 +27,7 @@ export function Products ({ products }) {
                             </div>
                             <div>
                                 <button 
-                                style = {{backgroundColor : isProductInCart ? 'red' : '#09f'}}
+                                style = {{backgroundColor : isProductInCart ? 'rgb(19, 148, 16)' : '#d53b3b'}}
                                 onClick={()=>{
                                     isProductInCart
                                     ? removeFromCart(product)

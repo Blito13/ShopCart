@@ -27,8 +27,6 @@ export const cartReducer = (state, action) => {
 
   switch (type) {
     case CART_ACTION_TYPES.ADD_TO_CART:
-      /* const [cart , total ] =  state; */
-      /* console.log(cart , total) */
       const { id } = action.payload;
       const productInCartIndex = state.cart.findIndex(item => item.id === id);
     
@@ -48,7 +46,7 @@ export const cartReducer = (state, action) => {
           cart  : newState,
           total : totales
         }
-        updateLocalStorage(newProducts); // Aquí actualizamos el localStorage con el nuevo estado que incluye tanto el carrito como el total
+        updateLocalStorage(newProducts); 
         return newProducts;
       }
     
@@ -83,6 +81,7 @@ export const cartReducer = (state, action) => {
         cart : [],
         total : 0
       }
+      localStorage.removeItem("cart")
       updateLocalStorage(cleared);
       return cleared;
 
@@ -99,7 +98,7 @@ export const cartReducer = (state, action) => {
       return clear;
 
     default:
-   /*    console.log(state, "sadjaksjdla") */
+  
       return state.cart;
   }
 };
