@@ -1,9 +1,12 @@
 import React, { useEffect, useState } from 'react';
 import { useCart } from "../hooks/useCart";
+import { Link } from 'react-router-dom'
+
 export function SendCart() {
   const [order, setOrder] = useState('');
   const [total , setTotal]  = useState(0);
   const {cart , sendForm} = useCart();
+  
   console.log(cart.total)
 
  /*  useEffect(()=>{
@@ -39,7 +42,7 @@ export function SendCart() {
         <p>Total:${cart.total}</p>
         </label>
         <br />
-        <button style = {{backgroundColor : "rgb(19, 148, 16)"}} type="submit">Enviar pedido por WhatsApp</button>
+        <button style = {{backgroundColor : "rgb(19, 148, 16)"}} type="submit"> <Link  to={`/takeOrder`}>Enviar pedido</Link></button>
       </form>
     </div>
   );

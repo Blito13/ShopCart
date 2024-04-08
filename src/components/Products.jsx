@@ -26,6 +26,9 @@ export function Products ({ products }) {
                                 <strong>{product.title}</strong> - ${product.price}
                             </div>
                             <div>
+                                <p>{product.description}</p>
+                            </div>
+                            <div>
                                 <button 
                                 style = {{backgroundColor : isProductInCart ? 'rgb(19, 148, 16)' : '#d53b3b'}}
                                 onClick={()=>{
