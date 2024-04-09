@@ -1,56 +1,117 @@
 import React, { useState } from "react";
-import { useCart } from '../hooks/useCart';
 import "./Form.css";
+import { useCart } from "../hooks/useCart";
 
+export  const Form = ({open }) => {
+  const {cart , sendForm} = useCart();
+  const [nombre, setNombre] = useState("");
+  const [telefono, setTelefono] = useState("");
+  const [formaDePago, setFormaDePago] = useState("");
+  const [formaDeEntrega, setFormaDeEntrega] = useState("");
 
-export const  Form = () => {
-   const {cart , sendForm} = useCart();
-   const [nombre , setNombre ] = useState("");
-   const [telefono , setTelefono ] = useState("");
-   const [formaDePago , setFormaDePago ] = useState("");
-   const [formaDeEntrega , setFormaDeEntrega ] = useState("");
-    const handleMessage = (e) =>{
-        e.preventDefault();
-        console.log(cart.cart)
-        let finalTotal= cart.total ;
-        cart.cart.map(e => {
-          text +=  ` 
-          *${e.title}  : 
-          - cantidad : ${e.quantity}
-          - precio Unitario : ${e.price}`
-        })
-        text += `
-        Precio total : 
-        - ${finalTotal}
-        Telefono : 
-        - ${telefono}
-        Forma de pago : 
-        -${formaDePago}
-        Forma de entrega : 
-        -${formaDeEntrega}`
-        ;
-       sendForm(text)
-      }
-      const handleChange = (e) => {
-        const {name ,value} = e.target;
-        console.log(name , value)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    // Aquí puedes manejar la lógica para enviar el formulario
+    e.preventDefault();
+    console.log(cart.cart)
+    let text = "Hola AmasoCriando este es mi pedido ";
+    let finalTotal= cart.total ;
+    cart.cart.map(e => {
+      text +=  ` 
+      *${e.title}  : 
+      - cantidad : ${e.quantity}
+      - precio Unitario : ${e.price}`
+    })
+    text += `
+    Precio total : 
+    - ${finalTotal}
+    Nombre : 
+    -${nombre}
+    Telefono 
+    -${telefono}
+    Forma de pago
+    -${formaDePago}
+    Forma de entrega :
+    -${formaDeEntrega}`;
+    console.log(text)
+   sendForm(text)
+    console.log("Nombre:", nombre);
+    console.log("Teléfono:", telefono);
+    console.log("Forma de pago:", formaDePago);
+    console.log("Forma de entrega:", formaDeEntrega);
+  };
 
-      }
-    return (
-        <div className="container" >
-            <form onSubmit={handleMessage}>
-            <h4>Nombre y apellido</h4>
-            <input type="text" id = "test" name ="nombre" onChange={(e)=> handleChange(e)}/>
-            <h4>Telefono</h4>
-            <input type="text1" id = "test" name = "telefono" onChange={(e)=> handleChange(e)}/>
-            <label htmlFor="test2" name ="formadepago"onChange={(e)=> handleChange(e)} >Forma de pago</label>
-            <input type="radio" id= "test2" value = "Efectivo"/>
-            <input type="radio" id= "test2" value = "Transferencia"/>
-            <label htmlFor="test3" name ="formadeentrega" onChange={(e)=> handleChange(e)}>Forma de Entrega</label>
-            <input type="radio" id= "test3" value = "Lo retiro personalmente"/>
-            <input type="radio" id= "test3" value = "Necesito que me lo envien"/>
-            <button type = "submit" value="Pedir por Whatsapp"/>
-            </form>
+  return (
+    <div className="container">
+     
+      <form onSubmit={handleSubmit}>
+        <div>
+          <label htmlFor="nombre">Nombre:</label>
+          <input
+            type="text"
+            id="nombre"
+            value={nombre}
+            onChange={(e) => setNombre(e.target.value)}
+          />
         </div>
-    )
+        <div>
+          <label htmlFor="telefono">Teléfono:</label>
+          <input
+            type="tel"
+            id="telefono"
+            value={telefono}
+            onChange={(e) => setTelefono(e.target.value)}
+          />
+        </div>
+        <div>
+          <p>Forma de pago:</p>
+          <label>
+            <input
+              type="radio"
+              name="formaDePago"
+              value="Efectivo"
+              checked={formaDePago === "Efectivo"}
+              onChange={(e) => setFormaDePago(e.target.value)}
+            />
+            Efectivo
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="formaDePago"
+              value="Transferencia"
+              checked={formaDePago === "Transferencia"}
+              onChange={(e) => setFormaDePago(e.target.value)}
+            />
+            Transferencia
+          </label>
+        </div>
+        <div>
+          <p>Forma de entrega:</p>
+          <label>
+            <input
+              type="radio"
+              name="formaDeEntrega"
+              value="Delivery"
+              checked={formaDeEntrega === "Delivery"}
+              onChange={(e) => setFormaDeEntrega(e.target.value)}
+            />
+            Delivery
+          </label>
+          <label>
+            <input
+              type="radio"
+              name="formaDeEntrega"
+              value="Retiro Personalmente"
+              checked={formaDeEntrega === "Retiro Personalmente"}
+              onChange={(e) => setFormaDeEntrega(e.target.value)}
+            />
+            Retiro Personalmente
+          </label>
+        </div>
+        <button type="submit">Enviar Pedido</button>
+      </form>
+    </div>
+  );
 };
+

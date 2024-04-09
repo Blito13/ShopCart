@@ -28,6 +28,7 @@ function CartItem ({thumbnail , price , title , quantity , addToCart})  {
 export function Cart () {
     const cartCheckBoxId = useId();
     const {cart , clearCart , addToCart , sendCart ,getTotal } = useCart();
+    console.log(cart.total)
     
   /*   const [total , setTotal] = useState(0); */
 
@@ -54,17 +55,14 @@ export function Cart () {
             </ul>
                 
                 {cart.cart.length > 0 
-                ?<SendCart
-                ></SendCart>
-                :<h1>No products yet</h1>
-                }
-           <div></div>
-                {/* <img src={alfajoresChocolate} alt = "ss"></img> */}
-                
-                
+                ?(<label>
+                <p>Total:${cart.total}</p>
+                </label> && 
             <button style = {{marginTop : "9px" , backgroundColor : "rgb(19, 148, 16)"}} onClick={clearCart}>
                 <ClearCartIcon/>
-            </button>
+            </button>)
+                : <h1>No products yet</h1>
+                }
         </aside>
         </>
     )

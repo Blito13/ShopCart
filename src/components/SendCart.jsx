@@ -37,12 +37,12 @@ export function SendCart() {
 
   return (
     <div>
-      <form onSubmit={handleMessage}>
+      <form >
         <label>
         <p>Total:${cart.total}</p>
         </label>
         <br />
-        <button style = {{backgroundColor : "rgb(19, 148, 16)"}} type="submit"> <Link  to={`/takeOrder`}>Enviar pedido</Link></button>
+        <button style = {{backgroundColor : "rgb(19, 148, 16)"}}  >Enviar pedido</button>
       </form>
     </div>
   );

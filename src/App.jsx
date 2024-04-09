@@ -18,16 +18,11 @@ function App() {
 
   return (
     <CartProvider>
-      <BrowserRouter>
-        
+        <Header/>
         <Cart/>
-        <Routes>
-          <Route path = "/" element={<Header/>}/>
-        <Route path="/takeOrder" element={<Form/>}/>
-        </Routes>
+        <Form/>
         <Products products={filteredProducts}/>
-  {IS_DEVELOPMENT && <Footer />}
-      </BrowserRouter>
+        {IS_DEVELOPMENT && <Footer />}
     </CartProvider>
   )
 }
