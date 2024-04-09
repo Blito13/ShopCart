@@ -36,34 +36,40 @@ export function Cart () {
 
     return (
         <>
-        <label className="cart-button" htmlFor={cartCheckBoxId}>
-            <CartIcon/>
-        </label>
-        <input id = {cartCheckBoxId} type = "checkbox"/>
-        <aside className="cart">
-            <ul>
-                {cart.cart.map(product => (
-                  /*   handleTotal(product.price * product.quantity) */
-                    <CartItem
+             <label className="cart-button" htmlFor={cartCheckBoxId}>
+             <CartIcon/>
+            </label>
+    <input id={cartCheckBoxId} type="checkbox"/>
+    <aside className="cart">
+        <ul>
+            {cart.cart.map(product => (
+                <CartItem
                     key={product.id}
-                    addToCart={()=>addToCart(product)}
+                    addToCart={() => addToCart(product)}
                     {...product}
-                    />
-                    )
-                    )
-                    }
-            </ul>
-                
-                {cart.cart.length > 0 
-                ?(<label>
-                <p>Total:${cart.total}</p>
-                </label> && 
-            <button style = {{marginTop : "9px" , backgroundColor : "rgb(19, 148, 16)"}} onClick={clearCart}>
-                <ClearCartIcon/>
-            </button>)
-                : <h1>No products yet</h1>
-                }
-        </aside>
+                />
+            ))}
+        </ul>
+        {cart.cart.length > 0 && (
+            <div>
+                <label>
+                    <p>Total: ${cart.total}</p>
+                </label>
+                <button
+                    style={{ marginTop: "9px", backgroundColor: "rgb(19, 148, 16)" }}
+                    onClick={clearCart}
+                >
+                    <ClearCartIcon/>
+                </button>
+                <button
+                    style={{ marginTop: "9px", backgroundColor: "rgb(19, 148, 16)" }}
+                >
+                   Relizar Pedido
+                </button>
+            </div>
+        )}
+        {cart.cart.length === 0 && <h1>No products yet</h1>}
+    </aside>
         </>
     )
 }

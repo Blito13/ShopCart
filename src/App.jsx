@@ -9,7 +9,7 @@ import { Cart } from './components/Cart';
 import { CartProvider } from './context/cart';
 import { SendCart } from './components/SendCart';
 import { Form } from './components/Form';
-import { BrowserRouter, Route, Routes } from "react-router-dom";
+
 function App() {
 
  
