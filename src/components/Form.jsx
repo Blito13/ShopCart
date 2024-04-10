@@ -2,18 +2,20 @@ import React, { useState } from "react";
 import "./Form.css";
 import { useCart } from "../hooks/useCart";
 
-export  const Form = ({open }) => {
-  const {cart , sendForm} = useCart();
+export  const Form = ({isChecked , setIsChecked }) => {
+  const {cart , sendForm , clearCart} = useCart();
   const [nombre, setNombre] = useState("");
   const [telefono, setTelefono] = useState("");
   const [formaDePago, setFormaDePago] = useState("");
   const [formaDeEntrega, setFormaDeEntrega] = useState("");
+  /* const [isChecked, setIsChecked] = useState(false); */
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // Aquí puedes manejar la lógica para enviar el formulario
-    e.preventDefault();
-    console.log(cart.cart)
+    if (!nombre || !telefono || !formaDePago || !formaDeEntrega) {
+      alert("Todos los campos son obligatorios");
+      return ; // Detener el envío del formulario si falta algún campo
+    }
     let text = "Hola AmasoCriando este es mi pedido ";
     let finalTotal= cart.total ;
     cart.cart.map(e => {
@@ -34,7 +36,11 @@ export  const Form = ({open }) => {
     Forma de entrega :
     -${formaDeEntrega}`;
     console.log(text)
-   sendForm(text)
+   sendForm(text);
+   clearCart();
+   setIsChecked(false)
+   
+
     console.log("Nombre:", nombre);
     console.log("Teléfono:", telefono);
     console.log("Forma de pago:", formaDePago);
@@ -42,7 +48,7 @@ export  const Form = ({open }) => {
   };
 
   return (
-    <div className="container">
+    <div className={`container ${isChecked ? 'visible' : ''}`}>
      
       <form onSubmit={handleSubmit}>
         <div>

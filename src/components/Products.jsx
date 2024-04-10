@@ -25,12 +25,13 @@ export function Products ({ products }) {
                             <div>
                                 <strong>{product.title}</strong> - ${product.price}
                             </div>
-                            <div>
+                            <div style = {{maxHeight : "120px" , fontSize : "small"}}>
                                 <p>{product.description}</p>
+                                <p>{product.brand}</p>
                             </div>
-                            <div>
+                            <div >
                                 <button 
-                                style = {{backgroundColor : isProductInCart ? 'rgb(19, 148, 16)' : '#d53b3b'}}
+                                style = {{backgroundColor : isProductInCart ? 'rgb(19, 148, 16)' : '#d53b3b' , marginBottom : "0px"}}
                                 onClick={()=>{
                                     isProductInCart
                                     ? removeFromCart(product)
@@ -42,6 +43,7 @@ export function Products ({ products }) {
                                         :<AddToCartIcon/>
                                     }
                                 </button>
+                        
                             </div>
                         </li>
                     )})

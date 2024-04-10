@@ -3,6 +3,7 @@ import { useId, useState , useEffect} from "react";
 import { CartIcon, ClearCartIcon } from "./Icons";
 import { useCart } from '../hooks/useCart';
 import { SendCart } from '../components/SendCart';
+import { Form } from './Form';
 /* import { alfajoresChocolate} from "../media/realMedia/alfajoresChocolate.jpeg" */
 function CartItem ({thumbnail , price , title , quantity , addToCart})  {
      return (
@@ -28,6 +29,7 @@ function CartItem ({thumbnail , price , title , quantity , addToCart})  {
 export function Cart () {
     const cartCheckBoxId = useId();
     const {cart , clearCart , addToCart , sendCart ,getTotal } = useCart();
+    const [isChecked, setIsChecked] = useState(false);
     console.log(cart.total)
     
   /*   const [total , setTotal] = useState(0); */
@@ -39,7 +41,7 @@ export function Cart () {
              <label className="cart-button" htmlFor={cartCheckBoxId}>
              <CartIcon/>
             </label>
-    <input id={cartCheckBoxId} type="checkbox"/>
+   { <input id={cartCheckBoxId} type="checkbox"/>}
     <aside className="cart">
         <ul>
             {cart.cart.map(product => (
@@ -61,12 +63,12 @@ export function Cart () {
                 >
                     <ClearCartIcon/>
                 </button>
-                <button
-                    style={{ marginTop: "9px", backgroundColor: "rgb(19, 148, 16)" }}
-                >
-                   Relizar Pedido
-                </button>
-            </div>
+                <button onClick={() => setIsChecked(!isChecked)}>Toggle Cart</button>
+                <Form
+                isChecked={isChecked}
+                setIsChecked = {setIsChecked}
+                />
+                </div>
         )}
         {cart.cart.length === 0 && <h1>No products yet</h1>}
     </aside>
