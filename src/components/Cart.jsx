@@ -30,7 +30,7 @@ export function Cart () {
     const cartCheckBoxId = useId();
     const {cart , clearCart , addToCart , sendCart ,getTotal } = useCart();
     const [isChecked, setIsChecked] = useState(false);
-    console.log(cart.total)
+    
     
   /*   const [total , setTotal] = useState(0); */
 
@@ -63,7 +63,7 @@ export function Cart () {
                 >
                     <ClearCartIcon/>
                 </button>
-                <button onClick={() => setIsChecked(!isChecked)}>Toggle Cart</button>
+                <button onClick={() => setIsChecked(!isChecked)}>Realizar Compra</button>
                 <Form
                 isChecked={isChecked}
                 setIsChecked = {setIsChecked}

@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "./Form.css";
 import { useCart } from "../hooks/useCart";
+import { ExitIcon } from "./Icons";
 
 export  const Form = ({isChecked , setIsChecked }) => {
   const {cart , sendForm , clearCart} = useCart();
@@ -51,6 +52,10 @@ export  const Form = ({isChecked , setIsChecked }) => {
     <div className={`container ${isChecked ? 'visible' : ''}`}>
      
       <form onSubmit={handleSubmit}>
+        <label onClick={()=>setIsChecked(false)}>
+          <ExitIcon></ExitIcon>
+        </label>
+        <h1>Lo ultimo! </h1>
         <div>
           <label htmlFor="nombre">Nombre:</label>
           <input
@@ -115,7 +120,7 @@ export  const Form = ({isChecked , setIsChecked }) => {
             Retiro Personalmente
           </label>
         </div>
-        <button type="submit">Enviar Pedido</button>
+        <button type="submit">Enviar pedido por whatsApp</button>
       </form>
     </div>
   );
