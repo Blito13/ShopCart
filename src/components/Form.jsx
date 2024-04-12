@@ -51,12 +51,12 @@ export  const Form = ({isChecked , setIsChecked }) => {
   return (
     <div className={`container ${isChecked ? 'visible' : ''}`}>
      
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit} style={{display : "flex" ,flexDirection : "column"}}>
         <label onClick={()=>setIsChecked(false)}>
           <ExitIcon></ExitIcon>
         </label>
         <h1>Lo ultimo! </h1>
-        <div>
+        <div style={{flexDirection : "row"}}>
           <label htmlFor="nombre">Nombre:</label>
           <input
             type="text"
@@ -65,7 +65,7 @@ export  const Form = ({isChecked , setIsChecked }) => {
             onChange={(e) => setNombre(e.target.value)}
           />
         </div>
-        <div>
+        <div  >
           <label htmlFor="telefono">Teléfono:</label>
           <input
             type="tel"
@@ -74,7 +74,7 @@ export  const Form = ({isChecked , setIsChecked }) => {
             onChange={(e) => setTelefono(e.target.value)}
           />
         </div>
-        <div>
+        <div style={{display : "flex",flexDirection : "column" , alignItems  :"flex-start"}}>
           <p>Forma de pago:</p>
           <label>
             <input
@@ -97,7 +97,7 @@ export  const Form = ({isChecked , setIsChecked }) => {
             Transferencia
           </label>
         </div>
-        <div>
+        <div style={{display : "flex",flexDirection : "column" , alignItems : "flex-start"}}>
           <p>Forma de entrega:</p>
           <label>
             <input
@@ -120,6 +120,8 @@ export  const Form = ({isChecked , setIsChecked }) => {
             Retiro Personalmente
           </label>
         </div>
+        <br />
+        <br></br>
         <button type="submit">Enviar pedido por whatsApp</button>
       </form>
     </div>

@@ -8,10 +8,10 @@ import { Form } from './Form';
 function CartItem ({thumbnail , price , title , quantity , addToCart})  {
      return (
         <li>
-                    <img 
+                   {/*  <img 
                     src={thumbnail}
                     alt = {title}
-                    />
+                    /> */}
                     <div>
                         <strong>
                            {title}
@@ -35,6 +35,7 @@ export function Cart () {
   /*   const [total , setTotal] = useState(0); */
 
 /*    console.log(cart , total , clearCart) */
+console.log(cart.discounts)
 
     return (
         <>
@@ -55,7 +56,7 @@ export function Cart () {
         {cart.cart.length > 0 && (
             <div>
                 <label>
-                    <p>Total: ${cart.total-cart.discounts}</p>
+                    <p>Total: ${cart.total - (cart.discounts ? cart.discounts : 0)}</p>
                 </label>
                 <button
                     style={{ marginTop: "9px", backgroundColor: "rgb(19, 148, 16)" }}
@@ -63,6 +64,9 @@ export function Cart () {
                 >
                     <ClearCartIcon/>
                 </button>
+                <br />
+                <br />
+          
                 <button onClick={() => setIsChecked(!isChecked)}>Realizar Compra</button>
                 <Form
                 isChecked={isChecked}

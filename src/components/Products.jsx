@@ -29,9 +29,9 @@ export function Products ({ products }) {
                                 <p>{product.description}</p>
                                 <p>{product.brand}</p>
                             </div>
-                            <div >
+                            <div style={{marginBottom:"1px"}}>
                                 <button 
-                                style = {{backgroundColor : isProductInCart ? 'rgb(19, 148, 16)' : '#d53b3b' , marginBottom : "0px"}}
+                                style = {{backgroundColor : isProductInCart ? 'rgb(19, 148, 16)' : '#d53b3b' }}
                                 onClick={()=>{
                                     isProductInCart
                                     ? removeFromCart(product)
