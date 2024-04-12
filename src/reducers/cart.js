@@ -1,7 +1,8 @@
 
 const setObject = {
   cart : [],
-  total : "se actualiza desde aca principalmente"
+  total : "se actualiza desde aca principalmente",
+  discounts : 0 
 }
 export const cartInitialState = JSON.parse(window.localStorage.getItem('cart')) || setObject
 
@@ -41,10 +42,24 @@ export const cartReducer = (state, action) => {
           return item;
         });
         const totales = newState.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
-        console.log(totales)
+        const descuentos =  newState.reduce ((acc , curr)=> {
+         let mediaDocena  =  curr.quantity / 6;
+         let int =  Number.isInteger(mediaDocena);
+         let oddEven = mediaDocena % 2 === 0 ; 
+         if( int !== true && oddEven !==true ){
+         return  acc =0
+         }else if (int === true && oddEven !== true){
+          return acc +=500
+         }
+         else  {
+         return  acc+=2000
+         }
+        },state.discounts);
+        console.log(descuentos)
         const newProducts = {
           cart  : newState,
-          total : totales
+          total : totales,
+          discounts :descuentos
         }
         updateLocalStorage(newProducts); 
         return newProducts;
@@ -58,9 +73,11 @@ export const cartReducer = (state, action) => {
         }
       ];
       const totaly = newState.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
+      console.log(state.discounts)
       const newProducts = {
         cart  : newState,
-        total : totaly
+        total : totaly,
+        discounts : state.discounts
       }
       updateLocalStorage(newProducts); // Aquí también
       return newProducts;
@@ -71,7 +88,8 @@ export const cartReducer = (state, action) => {
       const result = filteredState.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
       const newFilters = {
         cart: filteredState,
-        total : result
+        total : result,
+        discounts : state.discounts
       }
       updateLocalStorage(newFilters);
       return newFilters;
@@ -79,7 +97,8 @@ export const cartReducer = (state, action) => {
     case CART_ACTION_TYPES.SEND_FORM:
       const cleared  = {
         cart : [],
-        total : 0
+        total : 0,
+        discounts :0
       }
       localStorage.removeItem("cart")
       updateLocalStorage(cleared);
@@ -92,7 +111,8 @@ export const cartReducer = (state, action) => {
     case CART_ACTION_TYPES.CLEAR_CART:
       const clear  = {
         cart : [],
-        total : 0
+        total : 0,
+        discounts : 0 
       }
       updateLocalStorage(clear);
       return clear;

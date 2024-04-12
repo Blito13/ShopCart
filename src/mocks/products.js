@@ -1,7 +1,7 @@
 import * as AllImages from '../media/realMedia/indexMedia';
    export const products=[
       {
-    id: 32,
+    id: 30,
     title: "Alfajor de chocolate con dulce de leche de coco ",
     description: "Ingredientes : harina integral , azucar mascabo , leche de coco , cacao amargo, aceite de girasol, dulce de leche de coco ",
     price: 1000,

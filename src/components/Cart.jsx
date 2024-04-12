@@ -30,7 +30,7 @@ export function Cart () {
     const cartCheckBoxId = useId();
     const {cart , clearCart , addToCart , sendCart ,getTotal } = useCart();
     const [isChecked, setIsChecked] = useState(false);
-    
+    console.log(cart.discounts)
     
   /*   const [total , setTotal] = useState(0); */
 
@@ -55,7 +55,7 @@ export function Cart () {
         {cart.cart.length > 0 && (
             <div>
                 <label>
-                    <p>Total: ${cart.total}</p>
+                    <p>Total: ${cart.total-cart.discounts}</p>
                 </label>
                 <button
                     style={{ marginTop: "9px", backgroundColor: "rgb(19, 148, 16)" }}
