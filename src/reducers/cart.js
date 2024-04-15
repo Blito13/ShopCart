@@ -46,11 +46,21 @@ export const cartReducer = (state, action) => {
           let resta = 0;
           let halfDoz =  curr.quantity %6;
           let totalDoz = curr.quantity %12;
+          let twelve =  curr.quantity /12;
+          let six =  curr.quantity / 6;
           console.log(halfDoz , totalDoz);
+          console.log(six ,"//", twelve);
+
           if(halfDoz === 0 && totalDoz === 6){
-            resta += 500
+            resta+= 500;
+          }
+          if(halfDoz === 0 && totalDoz === 6 && six >2){
+           
+            resta = 0;
+            resta += 500 *six + 1000
           }else if (halfDoz === 0 && totalDoz === 0){
-            resta += 2000
+           
+            resta += 2000*twelve
           }
           return acc + (curr.price * curr.quantity) - resta;
         } , 0);
@@ -73,17 +83,25 @@ export const cartReducer = (state, action) => {
         }
       ];
       const totaly = newState.reduce((acc, curr) =>  {
-        let resta = 0;
-        let counter = 0;
-        let halfDoz =  curr.quantity %6;
-        let totalDoz = curr.quantity %12;
-        console.log(halfDoz , totalDoz);
-        if(halfDoz === 0 && totalDoz === 6){
-          resta += 500;
-          counter ++
-        }else if (halfDoz === 0 && totalDoz === 0){
-          resta += 2000
-        }
+         let resta = 0;
+          let halfDoz =  curr.quantity %6;
+          let totalDoz = curr.quantity %12;
+          let twelve =  curr.quantity /12;
+          let six =  curr.quantity / 6;
+          console.log(halfDoz , totalDoz);
+          console.log(six ,"//", twelve);
+
+          if(halfDoz === 0 && totalDoz === 6){
+            resta+= 500;
+          }
+          if(halfDoz === 0 && totalDoz === 6 && six >2){
+           
+            resta = 0;
+            resta += 500 *six + 1000
+          }else if (halfDoz === 0 && totalDoz === 0){
+           
+            resta += 2000*twelve
+          }
         return acc + (curr.price * curr.quantity) - resta
       }, 0);
       
