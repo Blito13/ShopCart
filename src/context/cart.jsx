@@ -5,20 +5,7 @@ export const CartContext = createContext();
 
 function useCartReducer (){
     const [state , dispatch] = useReducer(cartReducer,cartInitialState);
-console.log(state)
-const  getNameRecipes = name => { 
-    return async function (dispatch){
-        try{
-            let json = await axios.get(`/recipes?name=${name}`)
-            return dispatch({
-                type : 'GET_NAME_RECIPE',
-                payload : json.data
-            })
-            
-        }catch(error){
-        console.log(error)}
-    }
-}
+
     const addToCart  = product => dispatch({
         type:'ADD_TO_CART',
         payload : product

@@ -30,7 +30,7 @@ export const cartReducer = (state, action) => {
     case CART_ACTION_TYPES.ADD_TO_CART:
       const { id } = action.payload;
       const productInCartIndex = state.cart.findIndex(item => item.id === id);
-      /* let discount = state.discounts; */
+      
       if (productInCartIndex >= 0) {
         const newState = state.cart.map((item, index) => {
           if (index === productInCartIndex) {
@@ -41,37 +41,26 @@ export const cartReducer = (state, action) => {
           }
           return item;
         });
-        //se descuentan productos de mas cuando eentra un nuevo producto al carrito , hay q ver la menera de limpiarlo
-        //necesito saber que hacer cuando eliminen del carrito un producto que tiene descuentos?
-        //validar que el elemento si tenga realmente descuento y no que sea cualquier producto "X"
-        //tratar de que tenga escalabilidad si o si
-        const descuentos =  newState.reduce ((acc , curr)=> {
-          if (curr.brand === ""){
-            return acc + state.discounts ? state.discounts : 0 ;
+        //el descuento se aplica en solo 500 si se selecciona 1 docena y media del mismo producto
+        const totales = newState.reduce((acc, curr) =>{
+          let resta = 0;
+          let halfDoz =  curr.quantity %6;
+          let totalDoz = curr.quantity %12;
+          console.log(halfDoz , totalDoz);
+          if(halfDoz === 0 && totalDoz === 6){
+            resta += 500
+          }else if (halfDoz === 0 && totalDoz === 0){
+            resta += 2000
           }
-          
-          let mediaDocena  =  curr.quantity / 6; // cuantas medias docenas tengo?
-          let int =  Number.isInteger(mediaDocena); //el numero es entero o float? si es entero me da que media docena es multiplo de 6
-          let oddEven = mediaDocena % 2 === 0 ; // es par o impar? si impar y mayor de 1 ya tiene descuentos aplicados
-          if( int !== true && oddEven !==true ){
-          return  acc;
-          }else if (int === true && oddEven !== true){
-           return acc +500
-          }
-          else  {
-            let descuento = 1500;// si ya hay mas descuentos aplicados se va a sumar un 500 de base , en realidad el descuento es de 2mil
-          return  acc+descuento
-          }
-       
-         },state.discounts ? state.discounts : 0);
-         console.log(descuentos)
-        const totales = newState.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
-        let result = totales - descuentos;
+          return acc + (curr.price * curr.quantity) - resta;
+        } , 0);
+
         const newProducts = {
           cart  : newState,
           total : totales,
-          discounts : descuentos
+          discounts : 0
         }
+        
         updateLocalStorage(newProducts); 
         return newProducts;
       }
@@ -83,12 +72,25 @@ export const cartReducer = (state, action) => {
           quantity: 1
         }
       ];
-      const totaly = newState.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
-      console.log(state.discounts)
+      const totaly = newState.reduce((acc, curr) =>  {
+        let resta = 0;
+        let counter = 0;
+        let halfDoz =  curr.quantity %6;
+        let totalDoz = curr.quantity %12;
+        console.log(halfDoz , totalDoz);
+        if(halfDoz === 0 && totalDoz === 6){
+          resta += 500;
+          counter ++
+        }else if (halfDoz === 0 && totalDoz === 0){
+          resta += 2000
+        }
+        return acc + (curr.price * curr.quantity) - resta
+      }, 0);
+      
       const newProducts = {
         cart  : newState,
         total : totaly,
-        discounts : state.discounts
+        discounts : 0
         
       }
       
@@ -102,7 +104,7 @@ export const cartReducer = (state, action) => {
       const newFilters = {
         cart: filteredState,
         total : result,
-        discount : state.discounts
+        discount : 0
       }
       updateLocalStorage(newFilters);
       return newFilters;
