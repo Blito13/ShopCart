@@ -52,6 +52,7 @@ export const cartReducer = (state, action) => {
           }else if (halfDoz === 0 && totalDoz === 0){
             resta += 2000
           }
+          console.log(resta)
           return acc + (curr.price * curr.quantity) - resta;
         } , 0);
 
