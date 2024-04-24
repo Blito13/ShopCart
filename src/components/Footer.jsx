@@ -8,7 +8,7 @@ export  function Footer () {
     const {cart } = useCart();
     const {filters} = useFilters();
     /* window.localStorage.setItem('cart', JSON.stringify([])) */
-   /*  localStorage.removeItem("cart"); */
+    /* localStorage.removeItem("cart"); */
    
     return (
         <footer>
