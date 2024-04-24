@@ -36,16 +36,13 @@ export  const Form = ({isChecked , setIsChecked }) => {
     -${formaDePago}
     Forma de entrega :
     -${formaDeEntrega}`;
-    console.log(text)
+   
    sendForm(text);
    clearCart();
    setIsChecked(false)
    
 
-    console.log("Nombre:", nombre);
-    console.log("Teléfono:", telefono);
-    console.log("Forma de pago:", formaDePago);
-    console.log("Forma de entrega:", formaDeEntrega);
+    
   };
 
   return (

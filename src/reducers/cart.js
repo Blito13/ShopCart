@@ -49,7 +49,7 @@ export const cartReducer = (state, action) => {
         const descuentos =  newState.reduce((acc , curr) => {
           return acc + curr.descuentos 
         } ,0) 
-        console.log("desc", totales-descuentos)
+        /* console.log("desc", totales-descuentos) */
         const newProducts = {
           cart  : newState,
           total : totales,
@@ -76,7 +76,7 @@ export const cartReducer = (state, action) => {
     const res = newState.reduce((acc, curr) => {
       return acc + curr.descuentos ;
     },0)
-    console.log(totaly -res)
+    /* console.log(totaly -res) */
       
       const newProducts = {
         cart  : newState,
