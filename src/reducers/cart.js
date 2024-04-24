@@ -49,11 +49,11 @@ export const cartReducer = (state, action) => {
         const descuentos =  newState.reduce((acc , curr) => {
           return acc + curr.descuentos 
         } ,0) 
-        console.log("desc", descuentos)
+        console.log("desc", totales-descuentos)
         const newProducts = {
           cart  : newState,
           total : totales,
-          discounts : 0
+          discounts : descuentos
         }
         
         updateLocalStorage(newProducts); 
@@ -74,15 +74,14 @@ export const cartReducer = (state, action) => {
              return acc + (curr.price * curr.quantity)
     }, 0);
     const res = newState.reduce((acc, curr) => {
-      return acc + (curr.discounts ? curr.discounts : 0);
+      return acc + curr.descuentos ;
     },0)
-    console.log(res)
+    console.log(totaly -res)
       
       const newProducts = {
         cart  : newState,
         total : totaly,
-        discounts : 0
-        
+        discounts : res
       }
       
       updateLocalStorage(newProducts); // Aquí también
