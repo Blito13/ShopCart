@@ -4,7 +4,6 @@ import React from "react";
 import styles from "./Footer.module.css";
 
 import * as AllImages from '../media/realMedia/indexMedia';
-import { Link  } from "react-router-dom"; 
 
 const {whatsapp , facebook , instagram , email , twitter} = AllImages;
 
