@@ -69,7 +69,7 @@ export function Cart () {
                 />
                 </div>
         )}
-        {cart.cart.length === 0 && <h1>No products yet</h1>}
+        
     </aside>
         </>
     )

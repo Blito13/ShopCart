@@ -19,6 +19,7 @@ export  const Form = ({isChecked , setIsChecked }) => {
     }
     let text = "Hola AmasoCriando este es mi pedido ";
     let finalTotal= cart.total ;
+    let discounts = cart.discounts;
     cart.cart.map(e => {
       text +=  ` 
       *${e.title}  : 
@@ -27,7 +28,7 @@ export  const Form = ({isChecked , setIsChecked }) => {
     })
     text += `
     Precio total : 
-    - ${finalTotal}
+    - ${finalTotal - discounts}
     Nombre : 
     -${nombre}
     Telefono 

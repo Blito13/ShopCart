@@ -32,7 +32,7 @@ export function SendCart() {
     <div>
       <form >
         <label>
-        <p>Total:${cart.total}</p>
+        <p>Total:${cart.total-cart.discounts}</p>
         </label>
         <br />
         <button style = {{backgroundColor : "rgb(19, 148, 16)"}}  >Enviar pedido</button>
