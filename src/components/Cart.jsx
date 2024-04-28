@@ -69,7 +69,13 @@ export function Cart () {
                 />
                 </div>
         )}
-        
+         {cart.cart.length === 0 && <>
+            <h1>Horarios de Reparto : </h1> 
+            <br></br>
+            <p>Lunes a viernes de 09:00 a 19:00hs</p>
+            <p>Sabados y Domingos Feria de manjares Laprida esquina Belgrano , Codoba Argentina</p>
+         </>
+            }
     </aside>
         </>
     )
