@@ -8,7 +8,7 @@
     width:200px;
     overflow:scroll;
     scrollbar-color: rgb(254, 254, 254) #ec7c7c;
-    /* scrollbar-width: thin; */
+    scrollbar-width: thin;
 }
 .cart img{
     aspect-ratio: 16/9;
@@ -34,21 +34,22 @@
     border-radius: 9999px;
     cursor: pointer;
     display: flex;
-    height: 32px;
+    height: 25px;
     justify-content: center;
     padding: 4px;
-    position: absolute;
+    position: fixed;
     right: 8px;
-    top:8px;
-    transition: all 3s ease;
+    top:3px;
+    transition: all 1s ease;
     width: 32px;
-    z-index:1;
+    z-index:9999;
 }
 .cart-button:hover {
     scale: 1.1;
   }
-  
   .cart-button ~ input:checked ~ .cart {
     height: 100%;
     display: block;
   }
+  
+ 

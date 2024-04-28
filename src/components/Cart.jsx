@@ -28,15 +28,16 @@ function CartItem ({thumbnail , price , title , quantity , addToCart})  {
 }
 export function Cart () {
     const cartCheckBoxId = useId();
+    console.log(cartCheckBoxId)
     const {cart , clearCart , addToCart , sendCart ,getTotal } = useCart();
     const [isChecked, setIsChecked] = useState(false);
-    
+   
     return (
         <>
              <label className="cart-button" htmlFor={cartCheckBoxId}>
              <CartIcon/>
             </label>
-   { <input id={cartCheckBoxId} type="checkbox"/>}
+ <input id={cartCheckBoxId} type="checkbox" style = {{"display" : "none"}}/>
     <aside className="cart">
         <ul>
             {cart.cart.map(product => (
