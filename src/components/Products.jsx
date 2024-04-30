@@ -14,7 +14,7 @@ export function Products ({ products }) {
            {/* <img src={alfajoresChocolate} alt = "ss"></img> */}
             <ul>
                 {
-                    products.slice(0,11).map(product =>{
+                    products/* reverse() */.map(product =>{
                         const isProductInCart = checkProductInCart(product)
                         return (
                         <li key ={product.id}>
