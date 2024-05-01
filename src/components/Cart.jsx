@@ -28,7 +28,7 @@ function CartItem ({thumbnail , price , title , quantity , addToCart})  {
 }
 export function Cart () {
     const cartCheckBoxId = useId();
-    console.log(cartCheckBoxId)
+   
     const {cart , clearCart , addToCart , sendCart ,getTotal } = useCart();
     const [isChecked, setIsChecked] = useState(false);
    

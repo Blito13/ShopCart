@@ -75,9 +75,9 @@ import * as AllImages from '../media/realMedia/indexMedia';
     
      {
         id: 41,
-   title: "Torta de zanahoria (Carrot Cake)",
+   title: "Torta de zanahoria (Carrot Cake) //precio por KG",
    description: " Ingredientes : manzana en cubos, harina integral, azucar mascabo, aceite de girasol, canela en polvo y leche de avena",
-   price: 2500,
+   price: 13000,
    discountPercentage: 2.92,
    rating: 4.92,
    stock: 54,
@@ -93,9 +93,9 @@ import * as AllImages from '../media/realMedia/indexMedia';
      },
      {
         id: 43,
-   title: "Torta de manzana invertida",
+   title: "Torta de manzana invertida //precio por KG",
    description: " Ingredientes : manzana en cubos, harina integral, azucar mascabo, aceite de girasol, canela en polvo y leche de avena",
-   price: 2500,
+   price: 13000,
    discountPercentage: 2.92,
    rating: 4.92,
    stock: 54,

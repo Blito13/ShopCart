@@ -22,7 +22,7 @@ export const Form = ({ isChecked, setIsChecked }) => {
     let total = cart.total;
     let discounts = cart.discounts;
     let finalTotal =  total - discounts;
-    console.log(deliveryOption)
+  
     let deliver =  formaDeEntrega === "Retiro Personalmente" ? finalTotal : Number(finalTotal) + Number(deliveryOption);
     
     cart.cart.map((e) => {
@@ -45,7 +45,7 @@ export const Form = ({ isChecked, setIsChecked }) => {
     Forma de entrega :
     -${formaDeEntrega}`;
 
-    console.log(text)
+
     sendForm(text);
     clearCart();
     setIsChecked(false);
@@ -60,9 +60,8 @@ export const Form = ({ isChecked, setIsChecked }) => {
   const handleDeliveryOptionChange = (e) => {
     e.preventDefault();
     const selectedOption = e.target.value;
-    const selectedZone = e.target.name;
-    console.log(selectedOption)// Actualiza el estado con la opción de entrega seleccionada
-  setDeliveryZone(selectedZone)
+    const selectedZone = e.target.options[e.target.selectedIndex].id;
+  setDeliveryZone(selectedZone);
   setDeliveryOption(selectedOption); 
   };
 
@@ -139,14 +138,14 @@ export const Form = ({ isChecked, setIsChecked }) => {
           {formaDeEntrega === "Delivery" && ( // Mostrar opciones de entrega solo si la forma de entrega es "Delivery"
             <div>
               <p>Opciones de entrega:</p>
-              <select   name = "Elegi tu ruta" value={deliveryOption} onChange={handleDeliveryOptionChange} >
-              <optgroup label="Elegi tu ruta!">
-                <option name = "ZonaNorte" value={2500}>Zona Norte $2500 </option>
-                <option name = "ZonaSur" value={800}>Zona Sur $800</option>
-                <option name = "ZonaCentro" value={1000}>Zona Centro $1000</option>
-                <option name = "ZonaEste" value={2000}>Zona Este $2000</option>
-                <option name = "ZonaOeste" value={2000}>Zona Oeste $2000</option>
-                </optgroup>
+              <select    value={deliveryOption} onChange={(e)=>handleDeliveryOptionChange(e)} >
+              {/* <optgroup label="Elegi tu ruta!"> */}
+                <option id = 'ZonaNorte' value={2500}>Zona Norte $2500 </option>
+                <option id = "ZonaSur" value={800}>Zona Sur $800</option>
+                <option id = "ZonaCentro" value={1000}>Zona Centro $1000</option>
+                <option id = "ZonaEste" value={2000}>Zona Este $2000</option>
+                <option id = "ZonaOeste" value={2000}>Zona Oeste $2000</option>
+                {/* </optgroup> */}
               </select>
             </div>
           )}
