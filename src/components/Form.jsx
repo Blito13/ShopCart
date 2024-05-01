@@ -10,7 +10,7 @@ export const Form = ({ isChecked, setIsChecked }) => {
   const [formaDePago, setFormaDePago] = useState("");
   const [formaDeEntrega, setFormaDeEntrega] = useState("");
   const [deliveryOption, setDeliveryOption] = useState(0); // Estado para almacenar la opción de entrega seleccionada
-
+  const [deliveryZone , setDeliveryZone] = useState("");
   const handleSubmit = (e) => {
     e.preventDefault();
     if (!nombre || !telefono || !formaDePago || !formaDeEntrega) {
@@ -23,8 +23,7 @@ export const Form = ({ isChecked, setIsChecked }) => {
     let discounts = cart.discounts;
     let finalTotal =  total - discounts;
     console.log(deliveryOption)
-    let deliver = Number(finalTotal) + Number(deliveryOption);
-    formaDeEntrega === "Retiro Personalmente" ? deliver = finalTotal :deliver;
+    let deliver =  formaDeEntrega === "Retiro Personalmente" ? finalTotal : Number(finalTotal) + Number(deliveryOption);
     
     cart.cart.map((e) => {
       text += `
@@ -42,7 +41,7 @@ export const Form = ({ isChecked, setIsChecked }) => {
     Forma de pago:
     -${formaDePago}
     Zona de entrega : 
-    -${"falta esto"}
+    -${deliveryZone}
     Forma de entrega :
     -${formaDeEntrega}`;
 
@@ -61,8 +60,9 @@ export const Form = ({ isChecked, setIsChecked }) => {
   const handleDeliveryOptionChange = (e) => {
     e.preventDefault();
     const selectedOption = e.target.value;
-    
+    const selectedZone = e.target.name;
     console.log(selectedOption)// Actualiza el estado con la opción de entrega seleccionada
+  setDeliveryZone(selectedZone)
   setDeliveryOption(selectedOption); 
   };
 
@@ -139,13 +139,13 @@ export const Form = ({ isChecked, setIsChecked }) => {
           {formaDeEntrega === "Delivery" && ( // Mostrar opciones de entrega solo si la forma de entrega es "Delivery"
             <div>
               <p>Opciones de entrega:</p>
-              <select  title = "culongo" name = "Elegi tu ruta" value={deliveryOption} onChange={handleDeliveryOptionChange} >
+              <select   name = "Elegi tu ruta" value={deliveryOption} onChange={handleDeliveryOptionChange} >
               <optgroup label="Elegi tu ruta!">
-                <option value={2500}>Zona Norte $2500 </option>
-                <option value={800}>Zona Sur $800</option>
-                <option value={1000}>Zona Centro $1000</option>
-                <option value={2000}>Zona Este $2000</option>
-                <option value={2000}>Zona Oeste $2000</option>
+                <option name = "ZonaNorte" value={2500}>Zona Norte $2500 </option>
+                <option name = "ZonaSur" value={800}>Zona Sur $800</option>
+                <option name = "ZonaCentro" value={1000}>Zona Centro $1000</option>
+                <option name = "ZonaEste" value={2000}>Zona Este $2000</option>
+                <option name = "ZonaOeste" value={2000}>Zona Oeste $2000</option>
                 </optgroup>
               </select>
             </div>

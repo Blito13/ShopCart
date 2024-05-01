@@ -41,7 +41,7 @@ export  function Footer () {
         </div> 
         </ul>
    
-    <div >
+    <div>
         <p>Copyright &copy; 2023 by Amasocriando. All rights reserved</p>
     </div>  
   

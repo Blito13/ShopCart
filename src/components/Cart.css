@@ -9,6 +9,7 @@
     overflow:scroll;
     scrollbar-color: rgb(254, 254, 254) #ec7c7c;
     scrollbar-width: thin;
+    z-index: 9998;
 }
 .cart img{
     aspect-ratio: 16/9;
