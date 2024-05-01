@@ -1,11 +1,11 @@
 .container {
-    background: #75b635;
+    background: rgb(19, 148, 16);
     display: none;
     padding: 32px;
     position: fixed;
     right: 0px;
     top: 0px;
-    width:200px;
+    width:180px;
 
 }
 .container.visible{

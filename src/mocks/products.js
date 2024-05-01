@@ -91,25 +91,6 @@ import * as AllImages from '../media/realMedia/indexMedia';
      "https://i.dummyjson.com/data/products/30/thumbnail.jpg"
    ]
      },
-    
-     {
-        id: 42,
-   title: "Porciones Torta de zanahoria (Carrot Cake)",
-   description: " Ingredientes : manzana en cubos, harina integral, azucar mascabo, aceite de girasol, canela en polvo y leche de avena",
-   price: 2500,
-   discountPercentage: 2.92,
-   rating: 4.92,
-   stock: 54,
-   brand: "",
-   category: "home-decoration",
-   thumbnail:AllImages.budinManzana,
-   images: [
-     "https://i.dummyjson.com/data/products/30/1.jpg",
-     "https://i.dummyjson.com/data/products/30/2.jpg",
-     "https://i.dummyjson.com/data/products/30/3.jpg",
-     "https://i.dummyjson.com/data/products/30/thumbnail.jpg"
-   ]
-     },
      {
         id: 43,
    title: "Torta de manzana invertida",
@@ -121,24 +102,6 @@ import * as AllImages from '../media/realMedia/indexMedia';
    brand: "",
    category: "home-decoration",
    thumbnail:AllImages.invertedAppleCake,
-   images: [
-     "https://i.dummyjson.com/data/products/30/1.jpg",
-     "https://i.dummyjson.com/data/products/30/2.jpg",
-     "https://i.dummyjson.com/data/products/30/3.jpg",
-     "https://i.dummyjson.com/data/products/30/thumbnail.jpg"
-   ]
-     },
-     {
-        id: 44,
-   title: "Porciones Torta manzana invertida",
-   description: " Ingredientes : manzana en cubos, harina integral, azucar mascabo, aceite de girasol, canela en polvo y leche de avena",
-   price: 2500,
-   discountPercentage: 2.92,
-   rating: 4.92,
-   stock: 54,
-   brand: "",
-   category: "home-decoration",
-   thumbnail:AllImages.budinManzana,
    images: [
      "https://i.dummyjson.com/data/products/30/1.jpg",
      "https://i.dummyjson.com/data/products/30/2.jpg",
