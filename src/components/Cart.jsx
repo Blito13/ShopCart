@@ -19,7 +19,7 @@ function CartItem ({thumbnail , price , title , quantity , addToCart})  {
                     </div>
                     <footer>
                         <small>
-                            Qty:{quantity}
+                            Cantidad:{quantity}
                         </small>
                         <button style = {{backgroundColor : "rgb(19, 148, 16)"}} onClick={addToCart}>+</button>
                     </footer>
