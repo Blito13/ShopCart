@@ -4,7 +4,7 @@ import { CartIcon, ClearCartIcon } from "./Icons";
 import { useCart } from '../hooks/useCart';
 import { SendCart } from '../components/SendCart';
 import { Form } from './Form';
-/* import { alfajoresChocolate} from "../media/realMedia/alfajoresChocolate.jpeg" */
+
 function CartItem ({thumbnail , price , title , quantity , addToCart})  {
      return (
         <li>
@@ -21,7 +21,7 @@ function CartItem ({thumbnail , price , title , quantity , addToCart})  {
                         <small>
                             Cantidad:{quantity}
                         </small>
-                        <button style = {{backgroundColor : "rgb(19, 148, 16)"}} onClick={addToCart}>+</button>
+                        <button style = {{backgroundColor : "rgb(19, 148, 16)"}} onClick={()=>addToCart()}>+</button>
                     </footer>
                 </li>
      )
@@ -69,7 +69,8 @@ export function Cart () {
                 />
                 </div>
         )}
-         {cart.cart.length === 0 && <>
+         {cart.cart.length === 0 && 
+         <>
             <h1>Horarios de Reparto : </h1> 
             <br></br>
             <p>Lunes a viernes de 09:00 a 19:00hs</p>
