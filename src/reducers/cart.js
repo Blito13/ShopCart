@@ -1,4 +1,4 @@
-
+import { calcularResta  } from "../components/utils";
 const setObject = {
   cart : [],
   total : "se actualiza desde aca principalmente",
@@ -34,42 +34,26 @@ export const cartReducer = (state, action) => {
       if (productInCartIndex >= 0) {
         const newState = state.cart.map((item, index) => {
           if (index === productInCartIndex) {
+            let descuentos = calcularResta( item.quantity+ 1, item.brand) 
             return {
               ...item, 
-              quantity: item.quantity + 1
+              quantity: item.quantity + 1,
+              descuentos : item.descuentos ? item.descuentos + descuentos : descuentos
             };
           }
           return item;
         });
-        //el descuento se aplica en solo 500 si se selecciona 1 docena y media del mismo producto
-        const totales = newState.reduce((acc, curr) =>{
-          let resta = 0;
-          let halfDoz =  curr.quantity %6;
-          let totalDoz = curr.quantity %12;
-          let twelve =  curr.quantity /12;
-          let six =  curr.quantity / 6;
-          console.log(halfDoz , totalDoz);
-          console.log(six ,"//", twelve);
-
-          if(halfDoz === 0 && totalDoz === 6){
-            resta+= 500;
-          }
-          if(halfDoz === 0 && totalDoz === 6 && six >2){
-           
-            resta = 0;
-            resta += 500 *six + 1000
-          }else if (halfDoz === 0 && totalDoz === 0){
-           
-            resta += 2000*twelve
-          }
-          console.log(resta)
-          return acc + (curr.price * curr.quantity) - resta;
-        } , 0);
-
+        const totales = newState.reduce((acc, curr) => {
+          return acc + (curr.price * curr.quantity)
+        }, 0);
+        const descuentos =  newState.reduce((acc , curr) => {
+          return acc + curr.descuentos 
+        } ,0) 
+        console.log("desc", totales-descuentos)
         const newProducts = {
           cart  : newState,
           total : totales,
-          discounts : 0
+          discounts : descuentos
         }
         
         updateLocalStorage(newProducts); 
@@ -80,37 +64,24 @@ export const cartReducer = (state, action) => {
         ...state.cart,
         {
           ...action.payload, // product
-          quantity: 1
+          quantity: 1,
+          descuentos : action.payload.descuentos?action.payload.descuentos : 0
         }
       ];
-      const totaly = newState.reduce((acc, curr) =>  {
-         let resta = 0;
-          let halfDoz =  curr.quantity %6;
-          let totalDoz = curr.quantity %12;
-          let twelve =  curr.quantity /12;
-          let six =  curr.quantity / 6;
-          console.log(halfDoz , totalDoz);
-          console.log(six ,"//", twelve);
-
-          if(halfDoz === 0 && totalDoz === 6){
-            resta+= 500;
-          }
-          if(halfDoz === 0 && totalDoz === 6 && six >2){
-           
-            resta = 0;
-            resta += 500 *six + 1000
-          }else if (halfDoz === 0 && totalDoz === 0){
-           
-            resta += 2000*twelve
-          }
-        return acc + (curr.price * curr.quantity) - resta
-      }, 0);
+    
+      
+      const totaly = newState.reduce((acc, curr) => {
+             return acc + (curr.price * curr.quantity)
+    }, 0);
+    const res = newState.reduce((acc, curr) => {
+      return acc + curr.descuentos ;
+    },0)
+    console.log(totaly -res)
       
       const newProducts = {
         cart  : newState,
         total : totaly,
-        discounts : 0
-        
+        discounts : res
       }
       
       updateLocalStorage(newProducts); // Aquí también
@@ -119,6 +90,7 @@ export const cartReducer = (state, action) => {
     case CART_ACTION_TYPES.REMOVE_FROM_CART:
       const { id: removeId } = payload;
       const filteredState = state.cart.filter(item => item.id !== removeId);
+      //creo q faltaria descontar eaca
       const result = filteredState.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
       const newFilters = {
         cart: filteredState,

@@ -7,8 +7,8 @@ export function Header () {
             <h1>
                <img src={AllImages.logo} style = {{width : "200px"}} alt="" />
             </h1>
-            <h1>
                <img src={AllImages.veganSpan} style = {{width : "100px", /* marginTop : "50px" */}} alt="" />
+            <h1>
                <img src={AllImages.logoSpan} style = {{width : "200px", justifyContent : "center" , alignItems : "center"/* marginTop : "50px" */}} alt="" />
             </h1>
             {/* <Filters/> */}
