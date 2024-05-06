@@ -1,10 +1,10 @@
 import { calcularResta  } from "../components/utils";
-/* const setObject = {
+const setObject = {
   cart : [],
-  total : "se actualiza desde aca principalmente",
+  total : 0,
   discounts : 0
-} */
-export const cartInitialState = JSON.parse(window.localStorage.getItem('cart')) /* || setObject */
+}
+export const cartInitialState = JSON.parse(window.localStorage.getItem('cart')) || setObject
 
 
 
