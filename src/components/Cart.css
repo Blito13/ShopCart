@@ -1,11 +1,11 @@
 .cart{
     background: #ec7c7c;
-    display: none;
+    display: block;
     padding: 12px;
-    position: fixed;
+    /* position: fixed; */
     right: 0px;
     top: 0px;
-    width:200px;
+   /*  width:200px; */
     overflow:scroll;
     scrollbar-color: rgb(254, 254, 254) #ec7c7c;
     /* scrollbar-width: thin; */
@@ -47,8 +47,9 @@
 .cart-button:hover {
     scale: 1.1;
   }
-  
-  .cart-button ~ input:checked ~ .cart {
+ /*  .cart-button ~ input:checked ~ .cart {
     height: 100%;
     display: block;
-  }
+  } */
+  
+ 

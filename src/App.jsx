@@ -9,7 +9,8 @@ import { Cart } from './components/Cart';
 import { CartProvider } from './context/cart';
 import { SendCart } from './components/SendCart';
 import { Form } from './components/Form';
-
+import{ Drawer }from"antd";
+;
 function App() {
 
  
@@ -20,7 +21,7 @@ function App() {
     <CartProvider>
         <Header/>
         <Cart/>
-        <Form/>
+       {/*  <Form/> */}
         <Products products={filteredProducts}/>
         {IS_DEVELOPMENT && <Footer />}
     </CartProvider>

@@ -42,17 +42,30 @@ export  const Form = ({isChecked , setIsChecked }) => {
    setIsChecked(false)
    
 
-    console.log("Nombre:", nombre);
-    console.log("Teléfono:", telefono);
-    console.log("Forma de pago:", formaDePago);
-    console.log("Forma de entrega:", formaDeEntrega);
+
+    sendForm(text);
+    clearCart();
+   /*  setIsChecked(false) */;
+  };
+
+  const handleFormaDeEntregaChange = (e) => {
+    e.preventDefault();
+    let entrega =  e.target.value
+    setFormaDeEntrega(entrega);
+  };
+
+  const handleDeliveryOptionChange = (e) => {
+    e.preventDefault();
+    const selectedOption = e.target.value;
+    const selectedZone = e.target.options[e.target.selectedIndex].id;
+  setDeliveryZone(selectedZone);
+  setDeliveryOption(selectedOption); 
   };
 
   return (
-    <div className={`container ${isChecked ? 'visible' : ''}`}>
-     
-      <form onSubmit={handleSubmit} style={{display : "flex" ,flexDirection : "column"}}>
-        <label onClick={()=>setIsChecked(false)}>
+    <div >
+      <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
+        <label >
           <ExitIcon></ExitIcon>
         </label>
         <h1>Lo ultimo! </h1>

@@ -4,7 +4,12 @@ import { CartIcon, ClearCartIcon } from "./Icons";
 import { useCart } from '../hooks/useCart';
 import { SendCart } from '../components/SendCart';
 import { Form } from './Form';
+<<<<<<< Updated upstream
 /* import { alfajoresChocolate} from "../media/realMedia/alfajoresChocolate.jpeg" */
+=======
+import { Button, Drawer } from 'antd';
+
+>>>>>>> Stashed changes
 function CartItem ({thumbnail , price , title , quantity , addToCart})  {
      return (
         <li>
@@ -28,16 +33,33 @@ function CartItem ({thumbnail , price , title , quantity , addToCart})  {
 }
 export function Cart () {
     const cartCheckBoxId = useId();
-    const {cart , clearCart , addToCart , sendCart ,getTotal } = useCart();
+
+    const { cart, clearCart, addToCart, sendCart, getTotal } = useCart();
     const [isChecked, setIsChecked] = useState(false);
-    
+    const [open, setOpen] = useState(false);
+    const [childrenDrawer, setChildrenDrawer] = useState(false);
+
+    const showDrawer = () => {
+        setOpen(true);
+    };
+    const onClose = () => {
+        setOpen(false);
+    };
+    const showChildrenDrawer = () => {
+        setChildrenDrawer(true);
+    };
+    const onChildrenDrawerClose = () => {
+        setChildrenDrawer(false);
+    };
+   
     return (
         <>
-             <label className="cart-button" htmlFor={cartCheckBoxId}>
+<Button type="primary" onClick={showDrawer} className='cart-button' >
              <CartIcon/>
-            </label>
-   { <input id={cartCheckBoxId} type="checkbox"/>}
-    <aside className="cart">
+      </Button>
+      <Drawer title="Tu compra" width={260}  closable={false} onClose={onClose} open={open} className='cart' style={{backgroundColor : "#ec7c7c" , alignItems : "center" , position: "fixed", display :"block" , height : "100%" , zIndex : "9998" , width:"260px"}}>
+    {/* <input id={cartCheckBoxId} type="checkbox" style = {{"display" : "none"}}/> */}
+    <div>
         <ul>
             {cart.cart.map(product => (
                 <CartItem
@@ -60,16 +82,36 @@ export function Cart () {
                 </button>
                 <br />
                 <br />
-          
-                <button onClick={() => setIsChecked(!isChecked)}>Realizar Compra</button>
+                <Button type="primary" onClick={showChildrenDrawer}>
+          Two-level drawer
+        </Button>
+        <Drawer
+          title="Two-level Drawer"
+          width={320}
+          closable={false}
+          onClose={onChildrenDrawerClose}
+          open={childrenDrawer}
+        >
+          This is two-level drawer
                 <Form
-                isChecked={isChecked}
-                setIsChecked = {setIsChecked}
+                /* isChecked={isChecked}
+                setIsChecked = {setIsChecked} */
                 />
+        </Drawer>
+            
                 </div>
         )}
-        {cart.cart.length === 0 && <h1>No products yet</h1>}
-    </aside>
+         {cart.cart.length === 0 && 
+         <>
+            <h1>Horarios de Reparto : </h1> 
+            <br></br>
+            <p>Lunes a viernes de 09:00 a 19:00hs</p>
+            <p>Sabados y Domingos Feria de manjares Laprida esquina Belgrano , Codoba Argentina</p>
+         </>
+            }
+    </div>
+    </Drawer>
         </>
+
     )
 }
