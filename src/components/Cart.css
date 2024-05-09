@@ -1,15 +1,3 @@
-.cart{
-    background: #ec7c7c;
-    display: block;
-    padding: 12px;
-    /* position: fixed; */
-    right: 0px;
-    top: 0px;
-   /*  width:200px; */
-    overflow:scroll;
-    scrollbar-color: rgb(254, 254, 254) #ec7c7c;
-    /* scrollbar-width: thin; */
-}
 .cart img{
     aspect-ratio: 16/9;
     width: 100%;
@@ -37,12 +25,12 @@
     height: 32px;
     justify-content: center;
     padding: 4px;
-    position: absolute;
+    position: fixed;
     right: 8px;
     top:8px;
     transition: all 3s ease;
     width: 32px;
-    z-index:1;
+    z-index:9999;
 }
 .cart-button:hover {
     scale: 1.1;
