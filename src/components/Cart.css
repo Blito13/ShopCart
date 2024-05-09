@@ -48,18 +48,9 @@
 .cart-button:hover {
     scale: 1.1;
   }
-<<<<<<< HEAD
  /*  .cart-button ~ input:checked ~ .cart {
     height: 100%;
     display: block;
   } */
   
  
-=======
-  .cart-button ~ input:checked ~ .cart {
-    height: 100%;
-    display: block;
-  }
-  
- 
->>>>>>> origin
