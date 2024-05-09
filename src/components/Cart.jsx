@@ -22,7 +22,7 @@ function CartItem ({thumbnail , price , title , quantity , addToCart})  {
                         <small>
                             Cantidad:{quantity}
                         </small>
-                        <button style = {{backgroundColor : "rgb(19, 148, 16)"}} onClick={addToCart}>+</button>
+                        <button style = {{backgroundColor : "rgb(19, 148, 16)"}} onClick={()=>addToCart()}>+</button>
                     </footer>
                 </li>
      )
@@ -91,19 +91,11 @@ export function Cart () {
                             </Button>
                             <Drawer
                                 title="Two-level Drawer"
-                                width={260}
+                                width={244}
+                                
                                 closable={false}
                                 onClose={onChildrenDrawerClose}
                                 open={childrenDrawer}
-                                style={{
-                                    backgroundColor: "#ec7c7c",
-                                    alignItems: "center",
-                                   
-                                    display: "block",
-                                    height: "100%",
-                                    zIndex: "9998",
-                                    width: "260px"
-                                }}
                             >
                                 This is two-level drawer
                                 <Form

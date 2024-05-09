@@ -5,7 +5,7 @@ import { useCart } from "../hooks/useCart";
 
 export function Products ({ products }) {
     const {addToCart ,cart,  total, removeFromCart ,clearCart} = useCart();
-    console.log(cart)
+  
     const checkProductInCart = product => {
         return cart.cart.some(item => item.id === product.id)
     }
@@ -14,7 +14,7 @@ export function Products ({ products }) {
            {/* <img src={alfajoresChocolate} alt = "ss"></img> */}
             <ul>
                 {
-                    products.slice(0,11).map(product =>{
+                    products/* reverse() */.map(product =>{
                         const isProductInCart = checkProductInCart(product)
                         return (
                         <li key ={product.id}>

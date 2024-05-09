@@ -23,7 +23,7 @@ function App() {
         <Cart/>
        {/*  <Form/> */}
         <Products products={filteredProducts}/>
-        {IS_DEVELOPMENT && <Footer />}
+        <Footer />
     </CartProvider>
   )
 }

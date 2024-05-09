@@ -1,7 +1,7 @@
 import { calcularResta  } from "../components/utils";
 const setObject = {
   cart : [],
-  total : "se actualiza desde aca principalmente",
+  total : 0,
   discounts : 0
 }
 export const cartInitialState = JSON.parse(window.localStorage.getItem('cart')) || setObject
@@ -49,7 +49,7 @@ export const cartReducer = (state, action) => {
         const descuentos =  newState.reduce((acc , curr) => {
           return acc + curr.descuentos 
         } ,0) 
-        console.log("desc", totales-descuentos)
+      
         const newProducts = {
           cart  : newState,
           total : totales,
@@ -76,7 +76,6 @@ export const cartReducer = (state, action) => {
     const res = newState.reduce((acc, curr) => {
       return acc + curr.descuentos ;
     },0)
-    console.log(totaly -res)
       
       const newProducts = {
         cart  : newState,
@@ -90,12 +89,13 @@ export const cartReducer = (state, action) => {
     case CART_ACTION_TYPES.REMOVE_FROM_CART:
       const { id: removeId } = payload;
       const filteredState = state.cart.filter(item => item.id !== removeId);
-      //creo q faltaria descontar eaca
       const result = filteredState.reduce((acc, curr) => acc + curr.price * curr.quantity, 0);
+      const discounts = filteredState.reduce((acc, curr) => acc + curr.descuentos, 0);
+      console.log(discounts)
       const newFilters = {
         cart: filteredState,
         total : result,
-        discount : 0
+        discounts : discounts > 0 ? discounts : 0
       }
       updateLocalStorage(newFilters);
       return newFilters;
@@ -110,23 +110,6 @@ export const cartReducer = (state, action) => {
       updateLocalStorage(cleared);
       return cleared;
 
-    case CART_ACTION_TYPES.TOTAL_PRICE:
-       // Calcula el precio total con descuentos
-       const totalPriceWithDiscounts = state.cart.reduce((total, item) => {
-        // Aquí puedes agregar la lógica para aplicar descuentos según la cantidad comprada
-        // Por ejemplo, si el usuario compra 6 o más productos, aplicar un descuento del 10%, etc.
-        // Puedes agregar condicionales aquí para verificar la cantidad de cada producto y aplicar el descuento correspondiente
-        // Actualiza el precio total con descuentos
-        return total + (item.price * item.quantity);
-      }, 0);
-
-      // Retorna un nuevo estado con el precio total actualizado
-      return {
-        ...state,
-        total: totalPriceWithDiscounts
-      };
-
-     
     case CART_ACTION_TYPES.CLEAR_CART:
       const clear  = {
         cart : [],
@@ -134,6 +117,7 @@ export const cartReducer = (state, action) => {
         discounts : 0
       }
       updateLocalStorage(clear);
+      
       return clear;
 
     default:

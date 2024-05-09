@@ -7,20 +7,13 @@ export function SendCart() {
   const [total , setTotal]  = useState(0);
   const {cart , sendForm} = useCart();
   
-  console.log(cart.total)
-
- /*  useEffect(()=>{
-    setTotal(getTotal())
-  }) */
   const handleSubmit = (e) => {
     e.preventDefault();
-
-    console.log(sendForm)
     sendForm(order);
   };
   const handleMessage = (e) =>{
     e.preventDefault();
-    console.log(cart.cart)
+
     let text = "Hola AmasoCriando este es mi pedido ";
     let finalTotal= cart.total ;
     cart.cart.map(e => {
@@ -39,7 +32,7 @@ export function SendCart() {
     <div>
       <form >
         <label>
-        <p>Total:${cart.total}</p>
+        <p>Total:${cart.total-cart.discounts}</p>
         </label>
         <br />
         <button style = {{backgroundColor : "rgb(19, 148, 16)"}}  >Enviar pedido</button>
