@@ -8,23 +8,19 @@ import { Button, Drawer } from 'antd';
 
 function CartItem ({thumbnail , price , title , quantity , addToCart})  {
      return (
-        <li>
-                   {/*  <img 
-                    src={thumbnail}
-                    alt = {title}
-                    /> */}
-                    <div>
-                        <strong>
-                           {title}
-                        </strong> - ${price}
-                    </div>
-                    <footer>
-                        <small>
-                            Cantidad:{quantity}
-                        </small>
-                        <button style = {{backgroundColor : "rgb(19, 148, 16)"}} onClick={()=>addToCart()}>+</button>
-                    </footer>
-                </li>
+         <li>
+             <div>
+                 <strong>
+                     {title}
+                 </strong> - ${price}
+             </div>
+             <footer>
+                 <small>
+                     Cantidad:{quantity}
+                 </small>
+                 <button style={{ backgroundColor: "rgb(19, 148, 16)" }} onClick={() => addToCart()}>+</button>
+             </footer>
+         </li>
      )
 }
 export function Cart () {
@@ -53,18 +49,9 @@ export function Cart () {
             <Button type="primary" onClick={showDrawer} className='cart-button' >
                 <CartIcon />
             </Button>
-            <Drawer title="Tu compra" width={260} closable={false} onClose={onClose} open={open}
-                style={{
-                    backgroundColor: "#ec7c7c",
-                    alignItems: "center",
-                    position: "fixed",
-                    display: "block",
-                    height: "100%",
-                    zIndex: "9998",
-                    width: "260px"
-                }}>
-                <div>
-                    <ul>
+            <Drawer title="Tu compra" width={260} closable={false} onClose={onClose} open={open}>
+                <aside className='cart' >
+                    <ul >
                         {cart.cart.map(product => (
                             <CartItem
                                 key={product.id}
@@ -74,7 +61,7 @@ export function Cart () {
                         ))}
                     </ul>
                     {cart.cart.length > 0 && (
-                        <div>
+                        <div style={{alignItems :"center" , justifyContent:"center" , display :"flex" , flexDirection :"column"}}>
                             <label>
                                 <p>Total: ${cart.total - cart.discounts}</p>
                             </label>
@@ -86,22 +73,18 @@ export function Cart () {
                             </button>
                             <br />
                             <br />
-                            <Button type="primary" onClick={showChildrenDrawer}>
-                                Two-level drawer
+                            <Button  onClick={showChildrenDrawer}>
+                                Realizar Pedido
                             </Button>
                             <Drawer
-                                title="Two-level Drawer"
+                                title="Lo ultimo!"
                                 width={244}
                                 
                                 closable={false}
                                 onClose={onChildrenDrawerClose}
                                 open={childrenDrawer}
                             >
-                                This is two-level drawer
-                                <Form
-                                /* isChecked={isChecked}
-                                setIsChecked = {setIsChecked} */
-                                />
+                                <Form/>
                             </Drawer>
 
                         </div>
@@ -114,7 +97,7 @@ export function Cart () {
                             <p>Sabados y Domingos Feria de manjares Laprida esquina Belgrano , Codoba Argentina</p>
                         </>
                     }
-                </div>
+                </aside>
             </Drawer>
         </>
 

@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import "./Form.css";
 import { useCart } from "../hooks/useCart";
-import { ExitIcon } from "./Icons";
 
 export const Form = ({ isChecked, setIsChecked }) => {
   const { cart, sendForm, clearCart } = useCart();
@@ -68,10 +67,6 @@ export const Form = ({ isChecked, setIsChecked }) => {
   return (
     <div className={`container ${isChecked ? "visible" : ""}`}>
       <form onSubmit={handleSubmit} style={{ display: "flex", flexDirection: "column" }}>
-        <label onClick={() => setIsChecked(false)}>
-          <ExitIcon></ExitIcon>
-        </label>
-        <h1>Lo ultimo! </h1>
         <div style={{ flexDirection: "row" }}>
           <label htmlFor="nombre">Nombre:</label>
           <input
@@ -152,7 +147,7 @@ export const Form = ({ isChecked, setIsChecked }) => {
         </div>
         <br />
         <br />
-        <button type="submit">Enviar pedido por WhatsApp</button>
+        <button style = {{backgroundColor :"white" , color : "black"}} type="submit">Enviar pedido a produccion</button>
       </form>
     </div>
   );
