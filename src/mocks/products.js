@@ -131,11 +131,11 @@ import * as AllImages from '../media/realMedia/indexMedia';
          id: 33,
     title: "Medialunas rellenas con crema bariloche ",
     description: "Ingredientes: Harina integral organica,  azucar mascabo,  leche de coco,  dulce de leche de coco, chocolate semiamargo, aceite de girasol.",
-    price: 1700,
+    price: 1800,
     discountPercentage: 8.33,
     rating: 4.92,
     stock: 54,
-    brand: " 1/2 docena $5.500 , 1 docena $10.000",
+    brand: " 1/2 docena $10.500 , 1 docena $18.200",
     category: "home-decoration",
     thumbnail:AllImages.medialunasRellenasCOCO,
     images: [
@@ -153,7 +153,7 @@ import * as AllImages from '../media/realMedia/indexMedia';
     discountPercentage: 8.33,
     rating: 4.92,
     stock: 54,
-    brand: "1/2 docena $5.500 , 1 docena $10.000",
+    brand: "1/2 docena $10.500 , 1 docena $18.200",
     category: "home-decoration",
     thumbnail:AllImages.medialunasCoco,
     images: [
@@ -207,7 +207,7 @@ import * as AllImages from '../media/realMedia/indexMedia';
     discountPercentage: 8.33,
     rating: 8.33,
     stock: 54,
-    brand: " 1/2 docena $10.500 , 1 docena $18.500",
+    brand: " 1/2 docena $10.500 , 1 docena $18.200",
     category: "home-decoration",
     thumbnail:AllImages.alfajoresChocolate,
     images: [
@@ -225,7 +225,7 @@ import * as AllImages from '../media/realMedia/indexMedia';
     discountPercentage: 8.33,
     rating: 4.92,
     stock: 54,
-    brand: " 1/2 docena $10.500 , 1 docena $18.500",
+    brand: " 1/2 docena $10.500 , 1 docena $18.200",
     category: "home-decoration",
     thumbnail:AllImages.alfajoresCoco,
     images: [
