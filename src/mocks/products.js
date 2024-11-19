@@ -3,7 +3,7 @@ import * as AllImages from '../media/realMedia/indexMedia';
      {
         id: 37,
    title: "Budin de chocolate y coco",
-   description: " **Ingredientes** : * Harina integral , * leche de coco , * coco rallado , * azucar mascabo , * aceite de girasol , * esencia de vainilla y * cacao amargo",
+   description: "Ingredientes : Harina integral , leche de coco , coco rallado , azucar mascabo , aceite de girasol , esencia de vainilla y cacao amargo",
    price: 3800,
    discountPercentage: 2.92,
    rating: 4.92,
