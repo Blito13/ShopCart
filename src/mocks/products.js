@@ -227,7 +227,7 @@ import * as AllImages from '../media/realMedia/indexMedia';
     stock: 54,
     brand: " 1/2 docena $10.500 , 1 docena $18.200",
     category: "home-decoration",
-    thumbnail:AllImages.alfajoresCoco,
+    thumbnail:"https://drive.google.com/file/d/1aX8Gq_5fvToyk-h24sgrjYiPliHzOtKD/view?usp=drive_link",
     images: [
       "https://i.dummyjson.com/data/products/30/1.jpg",
       "https://i.dummyjson.com/data/products/30/2.jpg",
