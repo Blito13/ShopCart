@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { Products } from './components/Products';
-import {products as initialProducts} from './mocks/products';
+/* import {products as initialProducts} from './mocks/products'; */
+import {productsASM as initialDataBaseProducts} from './mocks/trackingData';
 import { Header } from './components/Header';
 import { IS_DEVELOPMENT } from './components/config';
 import { Footer } from './components/Footer';
@@ -15,8 +16,9 @@ function App() {
 
  
   const {filters ,filterProducts} = useFilters();
-  const filteredProducts = filterProducts(initialProducts);
-
+  const filteredProducts = filterProducts(initialDataBaseProducts);
+  console.log(initialDataBaseProducts);
+console.log(import.meta.env.VITE_APP_NMBR)
   return (
     <CartProvider>
         <Header/>

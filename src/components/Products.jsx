@@ -7,6 +7,7 @@ export function Products ({ products }) {
     const {addToCart ,cart,  total, removeFromCart ,clearCart} = useCart();
   
     const checkProductInCart = product => {
+        console.log(cart)
         return cart.cart.some(item => item.id === product.id)
     }
     return(

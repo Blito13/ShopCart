@@ -31,20 +31,20 @@ export const Form = ({ isChecked, setIsChecked }) => {
       - precio Unitario : ${e.price}`;
     });
     text += `
-    Precio total : 
+    *Precio total : 
     - ${deliver}
-    Nombre : 
+    *Nombre : 
     -${nombre}
-    Telefono 
+    *Telefono 
     -${telefono}
-    Forma de pago:
+    *Forma de pago:
     -${formaDePago}
-    Zona de entrega : 
+    *Zona de entrega : 
     -${deliveryZone}
-    Forma de entrega :
+    *Forma de entrega :
     -${formaDeEntrega}`;
 
-
+    console.log(text)
     sendForm(text);
     clearCart();
     setIsChecked(false);

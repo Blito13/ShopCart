@@ -3,10 +3,10 @@ import { useCart } from '../hooks/useCart';
 import React from "react";
 import "./Footer.css";
 
-import * as AllImages from '../media/realMedia/indexMedia';
-
+/* import * as AllImages from '../media/realMedia/indexMedia'; */
+/* 
 const {whatsapp , facebook , instagram , email , twitter} = AllImages;
-
+ */
 export  function Footer () {
     const {cart } = useCart();
     const {filters} = useFilters();
@@ -23,17 +23,17 @@ export  function Footer () {
         <h3 >Contacto</h3>
         <div >
             <li>
-                <img src={facebook} className="icono"/>
+                <img src="https://drive.google.com/thumbnail?id=1mqhfVJ9rVTGd2FZ0eiYd0zpZAvxheA-1" className="icono"/>
                 <a  className ="links"href = "https://www.facebook.com/profile.php?id=100050808798787">Facebook
                 </a>
                 </li>
             <li>
-                <img src={whatsapp} className="icono"/>
-                <a  className ="links"href = "https://wa.me/3515935709">Whatsapp
+                <img src="https://drive.google.com/thumbnail?id=18RtB22BRw0vN7KoN7OdXsTJDPRKnqE1Y" className="icono"/>
+                <a  className ="links"href ={`https://wa.me${import.meta.env.VITE_APP_NMBR}`}>Whatsapp
                 </a>
                 </li>
             <li>
-                <img src={instagram} className="icono"/>
+                <img src="https://drive.google.com/thumbnail?id=1zVtWYGNkHF6LOu2dxmVsyHOkzsD1gMSc" className="icono"/>
                 <a  className ="links" href = "https://instagram.com/amasocriando">Istagram
                 </a>
                 </li>
