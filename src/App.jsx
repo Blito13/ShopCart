@@ -18,7 +18,6 @@ function App() {
   const {filters ,filterProducts} = useFilters();
   const filteredProducts = filterProducts(initialDataBaseProducts);
   console.log(initialDataBaseProducts);
-console.log(import.meta.env.VITE_APP_NMBR)
   return (
     <CartProvider>
         <Header/>
