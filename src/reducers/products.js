@@ -1,31 +1,26 @@
+/* import {collection, getDocs } from 'firebase/firestore/lite';
+import {db} from '../mocks/trackingData'; */
 
-const setProductos = {
-    products:[]
+export const fetchedProducts = JSON.parse(window.localStorage.getItem('products'))||{};
+
+export const PRODUCTS_ACTIONS = {
+    FETCH_DATA : "FETCH_DATA"
 };
 
-export const productsState = JSON.parse(window.localStorage.getItem('productos')) || setProductos
-
-export const PRODUCT_ACTION_TYPES = {
-  GET_PROD: 'GET_PROD',
+export const updateProductsStorage = state => {
+    window.localStorage.setItem('products',JSON.stringify(state));
 };
 
-// Función para actualizar el localStorage con el estado del carrito
-export const updateLocalStorage = state => {
-  window.localStorage.setItem('productos', JSON.stringify(state));
-};
+export const productsReducer = (state, action) =>{
+    const {type, payload} = action;
+    switch(type){
+        case PRODUCTS_ACTIONS.FETCH_DATA:
+            const productsList = payload     
+            updateProductsStorage(productsList);
+            return productsList; 
+        
+        default: 
+        return state
 
-// Reducer
-export const productsReducer = (state, action) => {
-  const { type, payload } = action;
-
-  switch (type) {
-    case PRODUCT_ACTION_TYPES.GET_PROD:
-         updateLocalStorage(newProducts); 
-        return newProducts;
-   
-
-    default:
-  
-      return state.cart;
-  }
-};
+    }
+}
