@@ -3,7 +3,7 @@ import { AddToCartIcon, RemoveFromCartIcon } from "./Icons";
 import { useCart } from "../hooks/useCart";
 import { useProducts } from "../hooks/useProducts";
 import { useEffect, useState } from "react";
-/* import  alfajoresChocolate from "../media/realMedia/alfajoresChocolate.jpeg" */
+
 
 export function Products () {
     const {addToCart ,cart,  total, removeFromCart ,clearCart} = useCart();
@@ -13,7 +13,6 @@ export function Products () {
     useEffect(()=>{
         if(!state.length){
                 getProd()
-                console.log("passing by")
             }
         
     },[])
