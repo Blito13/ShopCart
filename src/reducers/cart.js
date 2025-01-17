@@ -29,8 +29,8 @@ export const cartReducer = (state, action) => {
   switch (type) {
     case CART_ACTION_TYPES.ADD_TO_CART:
       const { id } = action.payload;
+
       const productInCartIndex = state.cart.findIndex(item => item.id === id);
-      
       if (productInCartIndex >= 0) {
         const newState = state.cart.map((item, index) => {
           if (index === productInCartIndex) {
